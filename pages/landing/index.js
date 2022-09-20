@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Header } from "../../components/Header";
+
 
 function Landing() {
   // Creating a function to connect user's wallet
+  const [user, setUser] = useState()
   const connectWallet = async () => {
     try {
       const { ethereum } = window;
@@ -25,10 +28,21 @@ function Landing() {
     }
   };
 
+  useEffect(() => {
+    var x = localStorage.getItem("walletAddress");
+    setUser(x);
+    if (user) {
+      window.location.href = "/home"
+    }
+    
+  }, [user])  
+  
+
   return (
     <>
       {/* Creating a hero component with black background and centering everything in the screen */}
-      <section className="relative bg-black flex flex-col h-screen justify-center items-center">
+      <section className="relative bg-[url('https://repository-images.githubusercontent.com/299409710/b42f7780-0fe1-11eb-8460-e459acd20fb4')] flex flex-col h-screen justify-center items-center">
+        <Header />
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
             <div className="text-center pb-12 md:pb-16">
@@ -36,8 +50,8 @@ function Landing() {
                 className="text-5xl text-white md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4"
                 data-aos="zoom-y-out"
               >
-                It is YouTube, but{" "}
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
+                Unlimited movies, TV shows, and more.{" "}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-red-400">
                   Decentralized
                 </span>
               </h1>
@@ -47,9 +61,10 @@ function Landing() {
                   data-aos="zoom-y-out"
                   data-aos-delay="150"
                 >
-                  A YouTube Clone built on top of Polygon network, allow users
-                  to create, share and watch videos, without worrying about
-                  their privacy.
+                  Ready to watch? Enter your email to create or restart your
+                  membership,built on top of Polygon network, allow users to
+                  watch videos, without worrying about their
+                  privacy.
                 </p>
                 <button
                   className="items-center  bg-white rounded-full font-medium  p-4 shadow-lg"

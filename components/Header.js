@@ -1,13 +1,16 @@
 import React from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
+import logo from '../images/logo.jpg'
 
 export const Header = ({ search }) => {
   return (
     <header className="w-full flex justify-between h-20 items-center border-b p-4 border-[#202229]">
-      <div className=" w-1/3    ">
+      <div className=" w-1/3   ">
         <img
           width={80}
-          src={"https://i.ibb.co/JHn1pjz/logo.png"}
+          src={
+            "https://www.pxpng.com/public/uploads/preview/-11621687998ytrgnduxoh.png"
+          }
           alt="YouTube Logo"
         />
       </div>

@@ -1,3 +1,70 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* .movies{
+    background-color: azure;
+} */
+
+.movies{
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  justify-content: space-evenly;
+  /* align-items: center; */
+  height: 50vh;
+  width: 100%;
+  overflow: hidden;
+  color: azure;
+  /* padding: 1rem; */
+}
+
+.text-part{
+  padding: 0 2rem ;
+}
+
+/* .text-part{
+  margin: 0 2rem;
+} */
+
+.text-part h1{
+  font-size: 2rem;
+  font-weight: 900;
+  padding: .5rem 0;
+}
+
+.image-part{
+    width: 100%;
+}
+
+.description{
+  display: flex;
+  padding: .5rem 0;
+}
+
+.stars{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.year{
+  display: flex;
+    margin: 0 1rem;
+
+}
+
+.some-button{
+  display: flex;
+  padding: .5rem 0;
+}
+
+/* .video-something{
+  max-width: 6rem;
+
+} */
+
+/* .video-container{
+display: flex;
+justify-content: center;
+align-items: center;
+} */
