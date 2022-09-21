@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { gql } from "@apollo/client";
-import { ApolloClient } from "../../clients";
 import Video from "../../components/Video";
 import VideoComponent from "../../components/VideoContainer";
+import { ApolloClient } from "../../clients";
 import { Header } from "../../components/Header";
+
+
 
 export default function VideoPage() {
   const [video, setVideo] = useState(null);
   const [relatedVideos, setRelatedVideos] = useState([]);
-      const [search, setSearch] = useState("");
 
-
-//   const client = useApolloClient();
   const getUrlVars = () => {
     var vars = {};
     var parts = window.location.href.replace(
@@ -71,7 +70,6 @@ export default function VideoPage() {
           (video) => video.id === getUrlVars().id
         );
         setVideo(video);
-        console.log(video)
       })
       .catch((err) => {
         alert("Something went wrong. please try again.!", err.message);
@@ -83,39 +81,34 @@ export default function VideoPage() {
   }, []);
 
   return (
-    <div className="w-full   bg-[#1a1c1f]  flex flex-row">
-      <div className="flex-1 flex flex-col">
-        <Header
-          search={(e) => {
-            setSearch(e);
-          }}
-        />
-        {video && (
-          <div className="flex flex-col m-10 justify-between      lg:flex-row">
-            <div className="video-container">
-              <div className="lg:h-4/6 w-6/6 video-something">
+    <> 
+      <Header />
+      <div className="w-full   bg-[#1a1c1f]  flex flex-row">
+        <div className="flex-1 flex flex-col">
+          {video && (
+            <div className="flex flex-col m-10 justify-between      lg:flex-row">
+              <div className="lg:w-4/6 w-6/6">
                 <VideoComponent video={video} />
               </div>
+              <div className="w-2/6">
+                <h4 className="text-md font-bold text-white ml-5 mb-3">
+                  Related Videos
+                </h4>
+                {relatedVideos.map((video) => (
+                  <div
+                    onClick={() => {
+                      setVideo(video);
+                    }}
+                    key={video.id}
+                  >
+                    <Video video={video} horizontal={true} />
+                  </div>
+                ))}
+              </div>
             </div>
-
-            <div className="w-2/6">
-              <h4 className="text-md font-bold text-white ml-5 mb-3">
-                Related Videos
-              </h4>
-              {relatedVideos.map((video) => (
-                <div
-                  onClick={() => {
-                    setVideo(video);
-                  }}
-                  key={video.id}
-                >
-                  <Video video={video} horizontal={true} />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

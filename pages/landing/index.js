@@ -23,6 +23,7 @@ function Landing() {
 
       // At last save the user's wallet address in browser's local storage
       localStorage.setItem("walletAddress", accounts[0]);
+      setUser(accounts[0]);
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +42,7 @@ function Landing() {
   return (
     <>
       {/* Creating a hero component with black background and centering everything in the screen */}
-      <section className="relative bg-[url('https://repository-images.githubusercontent.com/299409710/b42f7780-0fe1-11eb-8460-e459acd20fb4')] flex flex-col h-screen justify-center items-center">
+      <section className="relative bg-[url('https://repository-images.githubusercontent.com/299409710/b42f7780-0fe1-11eb-8460-e459acd20fb4')] flex flex-col h-full justify-center items-center">
         <Header />
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="pt-32 pb-12 md:pt-40 md:pb-20">
@@ -61,7 +62,7 @@ function Landing() {
                   data-aos="zoom-y-out"
                   data-aos-delay="150"
                 >
-                  Ready to watch? Enter your email to create or restart your
+                  Ready to watch? Click connectWallet to create or restart your
                   membership,built on top of Polygon network, allow users to
                   watch videos, without worrying about their
                   privacy.
